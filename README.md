@@ -69,3 +69,15 @@ The .NET SDK must be installed.
 - Verified that a **single number** input returns its own value.  
 - Verified that **two numbers separated by a comma** return the correct sum.  
 - Verified that providing **more than two numbers** throws an exception.
+
+# Task 2: Infinite Arithmetic
+
+> Modify the Add method to handle an unknown number of inputs.
+
+
+## ✅ Tests performed
+- Verified that an **empty string** returns 0.
+- Verified that a **null** input returns 0.
+- Verified that a **single number** input returns its own value.
+- Verified that **two numbers** separated by a comma return the correct sum.
+- Verified that **three or more numbers** are summed correctly.

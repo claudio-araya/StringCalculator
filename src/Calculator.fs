@@ -7,8 +7,7 @@ let Add (numbers: string) : int =
     | null -> 0
     | "" -> 0
     | _ ->
-        let parts = numbers.Split(',')
-        match parts with
-        | [| x |] -> int x
-        | [| x; y |] -> int x + int y
-        | _ -> failwith "Two numbers are allowed in Task 1"
+        numbers.Split(',')
+        |> Array.map Int32.Parse
+        |> Array.sum
+        

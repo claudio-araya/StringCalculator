@@ -19,3 +19,5 @@ paket-files/
 tools/
 
 *.log
+
+.fake
