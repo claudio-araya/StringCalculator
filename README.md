@@ -92,3 +92,15 @@ The .NET SDK must be installed.
 - Verified that **two numbers** separated by a comma return the correct sum.
 - Verified that inputs with **mixed commas and newlines** return the correct sum (e.g., `"1\n2,3"` → 6).
 - Verified that inputs with **only newlines** return the correct sum (e.g., `"2\n3\n5,"` → 10).
+
+# Task 4: Custom Delimiters
+
+> Support custom delimiters defined in the format //[delimiter]\n[numbers...].
+
+## ✅ Tests performed
+
+- Verified that an empty string input returns 0.
+- Verified that a single number input returns its own value.
+- Verified that inputs with commas and newlines as delimiters still return the correct sum (backward compatibility with Task 3).
+- Verified that using a custom delimiter such as ; works correctly (e.g., "//;\n1;2" → 3).
+- Verified that using another custom delimiter such as | works correctly (e.g., "//|\n3|4|5" → 12).
