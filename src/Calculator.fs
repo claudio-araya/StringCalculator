@@ -7,7 +7,6 @@ let Add (numbers: string) : int =
     | null -> 0
     | "" -> 0
     | _ ->
-        numbers.Split(',')
+        numbers.Split([|','; '\n'|], StringSplitOptions.RemoveEmptyEntries)
         |> Array.map Int32.Parse
         |> Array.sum
-        

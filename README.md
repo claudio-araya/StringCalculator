@@ -81,3 +81,14 @@ The .NET SDK must be installed.
 - Verified that a **single number** input returns its own value.
 - Verified that **two numbers** separated by a comma return the correct sum.
 - Verified that **three or more numbers** are summed correctly.
+
+# Task 3: Breaking Newlines
+
+> Allow the method to handle newline characters as delimiters.
+
+## ✅ Tests performed
+- Verified that an **empty string** returns 0.
+- Verified that a **single number** input returns its own value.
+- Verified that **two numbers** separated by a comma return the correct sum.
+- Verified that inputs with **mixed commas and newlines** return the correct sum (e.g., `"1\n2,3"` → 6).
+- Verified that inputs with **only newlines** return the correct sum (e.g., `"2\n3\n5,"` → 10).

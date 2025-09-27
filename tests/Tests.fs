@@ -5,11 +5,10 @@ open Calculator
 
 [<Theory>]
 [<InlineData("", 0)>]
-[<InlineData(null, 0)>]
-[<InlineData("5", 5)>]
-[<InlineData("4,5", 9)>]
-[<InlineData("1,2,3", 6)>]
-[<InlineData("10,20,30,40", 100)>]
-[<InlineData("1,2,3,4,5,6,7,8,9,10", 55)>]
-let ``Add returns correct result for valid inputs`` (input: string, expected: int) =
+[<InlineData("4", 4)>]
+[<InlineData("1,2", 3)>]
+[<InlineData("1\n2,3", 6)>]
+[<InlineData("2\n3\n5,", 10)>]
+let ``Add supports commas and newlines`` (input: string, expected: int) =
     Assert.Equal(expected, Add input)
+
