@@ -87,3 +87,12 @@ The project uses **xUnit** as the testing framework.
 - Verified that an input with **multiple negative numbers** throws an exception listing *all* negative values in the message.  
 
 
+# Task 6: Ignoring Giants
+
+> Ignore numbers greater than **1000** during summation.
+
+## ✅ Tests performed
+- Verified that numbers greater than **1000** are ignored (e.g., `"2,1001"` → 2).  
+- Verified that **1000 is included** while **2000 is ignored** (e.g., `"1000,5,2000"` → 1005).  
+- Verified that inputs with **999 and 1000 are summed**, while 1001 is ignored.  
+- Verified that the rule also works with **custom delimiters** (e.g., `"//;\n2;1001;3"` → 5). 

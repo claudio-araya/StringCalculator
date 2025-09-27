@@ -14,7 +14,9 @@ let Add (numbers: string) : int =
             else
                 (",", numbers.Replace("\n", ","))
 
-        let numberStrings = numPart.Split([| delimiter |], StringSplitOptions.RemoveEmptyEntries)
+        let numberStrings = 
+            numPart.Split([| delimiter |], StringSplitOptions.RemoveEmptyEntries)
+
         let parsedNumbers = numberStrings |> Array.map int
 
         let negatives = parsedNumbers |> Array.filter (fun n -> n < 0)
@@ -23,4 +25,6 @@ let Add (numbers: string) : int =
             let message = negatives |> Array.map string |> String.concat ", "
             raise (Exception($"negatives not allowed: {message}"))
         else
-            parsedNumbers |> Array.sum
+            parsedNumbers
+            |> Array.filter (fun n -> n <= 1000)
+            |> Array.sum

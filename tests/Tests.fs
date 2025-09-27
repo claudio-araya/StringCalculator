@@ -51,3 +51,14 @@ let ``Task4_Add supports custom delimiters`` (input: string, expected: int) =
 let ``Task5_Add throws exception for negatives with correct message`` (input: string, expectedMessage: string) =
     let ex = Assert.Throws<Exception>(fun () -> Add input |> ignore)
     Assert.Equal(expectedMessage, ex.Message)
+
+
+// Task 6: Ignoring Giants
+
+[<Theory>]
+[<InlineData("2,1001", 2)>]             
+[<InlineData("1000,5,2000", 1005)>]      
+[<InlineData("999,1000,1001", 1999)>]     
+[<InlineData("//;\n2;1001;3", 5)>]         
+let ``Task6_Add ignores numbers greater than 1000`` (input: string, expected: int) =
+    Assert.Equal(expected, Add input)
