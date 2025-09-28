@@ -8,15 +8,17 @@ let Add (numbers: string) : int =
     | _ ->
         let delimiters, numbersPart =
             if numbers.StartsWith("//") then
-
                 let idx = numbers.IndexOf('\n')
-                let delimiterPart = numbers.Substring(2, idx - 2) 
-                let numbersPart = numbers.Substring(idx + 1)     
+                let delimiterPart = numbers.Substring(2, idx - 2)
+                let numbersPart = numbers.Substring(idx + 1)
 
-                let cleanDelim = delimiterPart.Replace("[", "").Replace("]", "")
+                let customDelims =
+                    if delimiterPart.Contains("[") then
+                        delimiterPart.Split([| '['; ']' |], StringSplitOptions.RemoveEmptyEntries)
+                    else
+                        [| delimiterPart |]
 
-                ([| cleanDelim |], numbersPart)
-            
+                (customDelims, numbersPart)
             else
                 ([| ","; "\n" |], numbers)
 
