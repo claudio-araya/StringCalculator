@@ -4,7 +4,7 @@ open Calculator
 [<EntryPoint>]
 let main argv =
 
-    printfn "%d" (Add "//[*][%]\n1*2%3")
+    printfn "%d" (Add "//[***][%%]\n1***2%%3")
 
     // Validation is done through xUnit tests in the tests folder.
 

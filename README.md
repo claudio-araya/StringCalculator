@@ -115,7 +115,19 @@ The project uses **xUnit** as the testing framework.
 
 ## ✅ Tests performed
 
-- Verified that inputs with **two delimiters** are parsed and summed correctly (e.g., `//[*][%]\n1*2%3" → 6`).
-- Verified that inputs with **three or more different delimiters** work correctly (e.g., `//[;][#][!]\n4;5#6!7" → 22`).
-- Verified that numbers greater than **1000** are ignored even when multiple delimiters are used (e.g., `//[&][?]\n2&1001?3" → 5`).
-- Verified that inputs containing a **negative number** with multiple delimiters throw the correct exception message (e.g., `//[@][!]\n7@-8!9"` → `"negatives not allowed: -8`).
+- Verified that inputs with **two delimiters** are parsed and summed correctly (e.g., `"//[*][%]\n1*2%3"` → 6).
+- Verified that inputs with **three or more different delimiters** work correctly (e.g., `"//[;][#][!]\n4;5#6!7"` → 22).
+- Verified that numbers greater than **1000** are ignored even when multiple delimiters are used (e.g., `"//[&][?]\n2&1001?3` → 5).
+- Verified that inputs containing a **negative number** with multiple delimiters throw the correct exception message (e.g., `"//[@][!]\n7@-8!9"` → `"negatives not allowed: -8"`).
+
+
+# Task 9: Complex Delimiters
+
+> Ensure support for multiple long delimiters.
+
+## ✅ Tests performed
+
+- Verified that inputs with two long delimiters work correctly (e.g., `"//[***][%%]\n1***2%%3"` → 6).
+- Verified that inputs with three or more long delimiters return the correct sum (e.g., `"//[&&][###][!!]\n5&&10###15!!20"` → 50).
+- Verified that inputs with mixed alphabetic delimiters of different lengths are handled correctly (e.g., `"//[abc][defg]\n7abc8defg9"` → 24).
+- Verified that an input containing a negative number with long delimiters throws the correct exception message (e.g., `"//[***][%%]\n1***-2%%3"` → `"negatives not allowed: -2"`).

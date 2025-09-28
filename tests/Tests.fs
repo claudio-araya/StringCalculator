@@ -93,3 +93,18 @@ let ``Task8_Add supports multiple delimiters`` (input: string, expected: int) =
 let ``Task8_Add throws exception for negatives with multiple delimiters`` () =
     let ex = Assert.Throws<Exception>(fun () -> Add "//[@][!]\n7@-8!9" |> ignore)
     Assert.Equal("negatives not allowed: -8", ex.Message)
+
+
+// Task 9: Complex Delimiters
+
+[<Theory>]
+[<InlineData("//[***][%%]\n1***2%%3", 6)>]
+[<InlineData("//[&&][###][!!]\n5&&10###15!!20", 50)>]
+[<InlineData("//[abc][defg]\n7abc8defg9", 24)>]
+let ``Task9_Add supports multiple long delimiters`` (input: string, expected: int) =
+    Assert.Equal(expected, Add input)
+
+[<Fact>]
+let ``Task9_Add throws exception for negatives with long delimiters`` () =
+    let ex = Assert.Throws<Exception>(fun () -> Add "//[***][%%]\n1***-2%%3" |> ignore)
+    Assert.Equal("negatives not allowed: -2", ex.Message)
