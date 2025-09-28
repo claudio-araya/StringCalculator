@@ -62,3 +62,18 @@ let ``Task5_Add throws exception for negatives with correct message`` (input: st
 [<InlineData("//;\n2;1001;3", 5)>]         
 let ``Task6_Add ignores numbers greater than 1000`` (input: string, expected: int) =
     Assert.Equal(expected, Add input)
+
+
+// Task 7: Flexible Delimiters
+
+[<Theory>]
+[<InlineData("//[***]\n1***2***3", 6)>]
+[<InlineData("//[###]\n10###20###30", 60)>]
+[<InlineData("//[--]\n5--10--1001", 15)>]  // ignores 1001
+let ``Task7_Add supports delimiters of any length`` (input: string, expected: int) =
+    Assert.Equal(expected, Add input)
+
+[<Fact>]
+let ``Task7_Add throws exception for negatives with flexible delimiter`` () =
+    let ex = Assert.Throws<Exception>(fun () -> Add "//[***]\n1***-2***3" |> ignore)
+    Assert.Equal("negatives not allowed: -2", ex.Message)

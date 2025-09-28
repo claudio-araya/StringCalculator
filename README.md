@@ -96,3 +96,15 @@ The project uses **xUnit** as the testing framework.
 - Verified that **1000 is included** while **2000 is ignored** (e.g., `"1000,5,2000"` → 1005).  
 - Verified that inputs with **999 and 1000 are summed**, while 1001 is ignored.  
 - Verified that the rule also works with **custom delimiters** (e.g., `"//;\n2;1001;3"` → 5). 
+
+
+# Task 7: Flexible Delimiters
+
+> Extend the method to support delimiters of any length.
+
+## ✅ Tests performed
+- Verified that a **multi-character delimiter** works correctly (e.g., `"//[***]\n1***2***3"` → 6).  
+- Verified that delimiters of **different lengths** also work (e.g., `"//[###]\n10###20###30"` → 60).  
+- Verified that numbers greater than **1000** are ignored even with flexible delimiters (e.g., `"//[--]\n5--10--1001"` → 15).  
+- Verified that an input containing a **negative number** with a flexible delimiter throws the correct exception message (e.g., `"//[***]\n1***-2***3"` → `"negatives not allowed: -2"`).  
+

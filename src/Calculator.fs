@@ -6,16 +6,22 @@ let Add (numbers: string) : int =
     match numbers with
     | null | "" -> 0
     | _ ->
-        let delimiter, numPart =
+        let delimiters, numbersPart =
             if numbers.StartsWith("//") then
-                let parts = numbers.Split('\n')
-                let delim = parts.[0].Substring(2)
-                (delim, parts.[1])
-            else
-                (",", numbers.Replace("\n", ","))
 
-        let numberStrings = 
-            numPart.Split([| delimiter |], StringSplitOptions.RemoveEmptyEntries)
+                let idx = numbers.IndexOf('\n')
+                let delimiterPart = numbers.Substring(2, idx - 2) 
+                let numbersPart = numbers.Substring(idx + 1)     
+
+                let cleanDelim = delimiterPart.Replace("[", "").Replace("]", "")
+
+                ([| cleanDelim |], numbersPart)
+            
+            else
+                ([| ","; "\n" |], numbers)
+
+        let numberStrings =
+            numbersPart.Split(delimiters, StringSplitOptions.RemoveEmptyEntries)
 
         let parsedNumbers = numberStrings |> Array.map int
 
