@@ -11,37 +11,65 @@ This repository contains an implementation of a problem called **String Calculat
 Each task builds incrementally on the previous one, with tests ensuring that no earlier functionality is broken.  
 The project uses **xUnit** as the testing framework.
 
----
 
-## Running the project
+## Setup
 
 > [!IMPORTANT]  
 > The .NET SDK must be installed.
 
-- **Build the project**:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/claudio-araya/StringCalculator.git
+   cd StringCalculator
+   ```
+
+2. **Build the project**:
 
     ```bash
     dotnet build
     ```
 
-- **Run the main app**:
+3. **Run the main app**:
 
     ```bash
     dotnet run --project src
     ```
 
-- **Run the tests**:
+4. **Run the tests**:
 
     ```bash
     dotnet test
     ```
 
+## Usage
 
-# Task 1: Simple Summation
+The calculator logic is implemented in the Calculator class.
+
+```F#
+open StringCalculator
+
+let result = Calculator.Add "1,2,3"
+printfn "%d" result
+```
+
+
+## Project Structure
+
+- `src/Calculator.fs`: Contains the implementation of the Calculator class and helper methods.
+- `src/Program.fs`: Entry point of the console application.
+- `tests/Tests.fs`: Unit tests written with xUnit.
+- `StringCalculator.sln`: Solution file.
+
+
+<br><br>
+
+# Tasks Overview
+
+## Task 1: Simple Summation
 
 > Create a method `int Add(string numbers)` that sums up to two numbers. Return 0 for an empty string.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that an **empty string** returns `0`.  
 - Verified that a **single number** input returns its own value.  
 - Verified that **two numbers separated by a comma** return the correct sum.  
@@ -49,71 +77,74 @@ The project uses **xUnit** as the testing framework.
 
 
 
-# Task 2: Infinite Arithmetic
+## Task 2: Infinite Arithmetic
 
 > Modify the Add method to handle an unknown number of inputs.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that inputs with **three or more numbers** are summed correctly.  
 
 
 
-# Task 3: Breaking Newlines
+## Task 3: Breaking Newlines
 
 > Allow the method to handle newline characters as delimiters.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that inputs with **mixed commas and newlines** return the correct sum (e.g., `"1\n2,3"` → 6).  
 - Verified that inputs with **only newlines** return the correct sum (e.g., `"2\n3\n5,"` → 10).  
 
 
 
-# Task 4: Custom Delimiters
+## Task 4: Custom Delimiters
 
 > Support custom delimiters defined in the format `//[delimiter]\n[numbers...]`.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that using a custom delimiter such as `;` works correctly (e.g., `"//;\n1;2"` → 3).  
 - Verified that using another custom delimiter such as `|` works correctly (e.g., `"//|\n3|4|5"` → 12).  
 
 
 
-# Task 5: Negative Rebellion
+## Task 5: Negative Rebellion
 
 > Throw an exception for negative numbers, including them in the message.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that an input with a **single negative number** throws an exception with the correct message.  
 - Verified that an input with **multiple negative numbers** throws an exception listing *all* negative values in the message.  
 
 
-# Task 6: Ignoring Giants
+
+## Task 6: Ignoring Giants
 
 > Ignore numbers greater than **1000** during summation.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that numbers greater than **1000** are ignored (e.g., `"2,1001"` → 2).  
 - Verified that **1000 is included** while **2000 is ignored** (e.g., `"1000,5,2000"` → 1005).  
 - Verified that inputs with **999 and 1000 are summed**, while 1001 is ignored.  
 - Verified that the rule also works with **custom delimiters** (e.g., `"//;\n2;1001;3"` → 5). 
 
 
-# Task 7: Flexible Delimiters
+
+## Task 7: Flexible Delimiters
 
 > Extend the method to support delimiters of any length.
 
-## ✅ Tests performed
+### ✅ Tests performed
 - Verified that a **multi-character delimiter** works correctly (e.g., `"//[***]\n1***2***3"` → 6).  
 - Verified that delimiters of **different lengths** also work (e.g., `"//[###]\n10###20###30"` → 60).  
 - Verified that numbers greater than **1000** are ignored even with flexible delimiters (e.g., `"//[--]\n5--10--1001"` → 15).  
 - Verified that an input containing a **negative number** with a flexible delimiter throws the correct exception message (e.g., `"//[***]\n1***-2***3"` → `"negatives not allowed: -2"`).  
 
 
-# Task 8: Multiple Delimiters
+
+## Task 8: Multiple Delimiters
 
 > Allow multiple delimiters in the format //[delim1][delim2]\n.
 
-## ✅ Tests performed
+### ✅ Tests performed
 
 - Verified that inputs with **two delimiters** are parsed and summed correctly (e.g., `"//[*][%]\n1*2%3"` → 6).
 - Verified that inputs with **three or more different delimiters** work correctly (e.g., `"//[;][#][!]\n4;5#6!7"` → 22).
@@ -121,11 +152,12 @@ The project uses **xUnit** as the testing framework.
 - Verified that inputs containing a **negative number** with multiple delimiters throw the correct exception message (e.g., `"//[@][!]\n7@-8!9"` → `"negatives not allowed: -8"`).
 
 
-# Task 9: Complex Delimiters
+
+## Task 9: Complex Delimiters
 
 > Ensure support for multiple long delimiters.
 
-## ✅ Tests performed
+### ✅ Tests performed
 
 - Verified that inputs with two long delimiters work correctly (e.g., `"//[***][%%]\n1***2%%3"` → 6).
 - Verified that inputs with three or more long delimiters return the correct sum (e.g., `"//[&&][###][!!]\n5&&10###15!!20"` → 50).

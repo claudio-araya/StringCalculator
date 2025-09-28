@@ -1,10 +1,12 @@
 ﻿open System
-open Calculator
+open StringCalculator
 
 [<EntryPoint>]
 let main argv =
 
-    printfn "%d" (Add "//[***][%%]\n1***2%%3")
+    let result = Calculator.Add "//[***][%%]\n2***2%%3"
+
+    printfn "Result: %d" result
 
     // Validation is done through xUnit tests in the tests folder.
 
