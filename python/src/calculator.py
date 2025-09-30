@@ -31,4 +31,6 @@ class Calculator:
         if negatives:
             raise ValueError(f"negatives not allowed: {', '.join(map(str, negatives))}")
 
-        return sum(parsed_numbers)
+        filtered_numbers = [n for n in parsed_numbers if n <= 1000]
+
+        return sum(filtered_numbers)

@@ -39,7 +39,6 @@ def test_task4_add_supports_custom_delimiters(input_str, expected):
 
 
 # Task 5: Negative Rebellion
-
 @pytest.mark.parametrize("input_str, expected_message", [
     ("1,-2", "negatives not allowed: -2"),
     ("1\n-2,3", "negatives not allowed: -2"),
@@ -50,3 +49,14 @@ def test_task5_add_throws_exception_for_negatives(input_str, expected_message):
     with pytest.raises(ValueError) as excinfo:
         Calculator(input_str).add()
     assert str(excinfo.value) == expected_message
+
+
+# Task 6: Ignoring Giants
+@pytest.mark.parametrize("input_str, expected", [
+    ("2,1001", 2),
+    ("1000,5,2000", 1005),
+    ("999,1000,1001", 1999),
+    ("//;\n2;1001;3", 5),
+])
+def test_task6_add_ignores_numbers_greater_than_1000(input_str, expected):
+    assert Calculator(input_str).add() == expected
