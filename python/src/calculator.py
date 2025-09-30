@@ -27,4 +27,8 @@ class Calculator:
         delimiter, num_part = self._parse_delimiters_and_numbers()
         parsed_numbers = self._parse_numbers(num_part, delimiter)
 
+        negatives = [n for n in parsed_numbers if n < 0]
+        if negatives:
+            raise ValueError(f"negatives not allowed: {', '.join(map(str, negatives))}")
+
         return sum(parsed_numbers)

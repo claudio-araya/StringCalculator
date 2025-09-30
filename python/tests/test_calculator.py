@@ -36,3 +36,17 @@ def test_task3_add_supports_newlines_as_delimiters(input_str, expected):
 ])
 def test_task4_add_supports_custom_delimiters(input_str, expected):
     assert Calculator(input_str).add() == expected
+
+
+# Task 5: Negative Rebellion
+
+@pytest.mark.parametrize("input_str, expected_message", [
+    ("1,-2", "negatives not allowed: -2"),
+    ("1\n-2,3", "negatives not allowed: -2"),
+    ("//;\n1;-2;3", "negatives not allowed: -2"),
+    ("1,-2,-3,4", "negatives not allowed: -2, -3"),
+])
+def test_task5_add_throws_exception_for_negatives(input_str, expected_message):
+    with pytest.raises(ValueError) as excinfo:
+        Calculator(input_str).add()
+    assert str(excinfo.value) == expected_message
