@@ -7,6 +7,9 @@ class Calculator:
             parts = self.numbers.split("\n", 1)
             delimiter = parts[0][2:]
             num_part = parts[1]
+
+            if delimiter.startswith("[") and delimiter.endswith("]"):
+                delimiter = delimiter[1:-1]
         else:
             delimiter = ","
             num_part = self.numbers.replace("\n", ",")

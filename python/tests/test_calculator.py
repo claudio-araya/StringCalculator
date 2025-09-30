@@ -60,3 +60,19 @@ def test_task5_add_throws_exception_for_negatives(input_str, expected_message):
 ])
 def test_task6_add_ignores_numbers_greater_than_1000(input_str, expected):
     assert Calculator(input_str).add() == expected
+
+
+# Task 7: Flexible Delimiters
+@pytest.mark.parametrize("input_str, expected", [
+    ("//[***]\n1***2***3", 6),
+    ("//[###]\n10###20###30", 60),
+    ("//[--]\n5--10--1001", 15),
+])
+def test_task7_add_supports_delimiters_of_any_length(input_str, expected):
+    assert Calculator(input_str).add() == expected
+
+
+def test_task7_add_throws_exception_for_negatives_with_flexible_delimiter():
+    with pytest.raises(ValueError) as excinfo:
+        Calculator("//[***]\n1***-2***3").add()
+    assert str(excinfo.value) == "negatives not allowed: -2"
