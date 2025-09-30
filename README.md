@@ -84,7 +84,7 @@ printfn "%d" result
 The calculator logic is implemented in the `Calculator` class, located in `python/src/calculator.py`.
 
 ```python
-from src.calculator import Calculator
+from calculator import Calculator
 
 calc = Calculator("1,2,3")
 result = calc.add()
