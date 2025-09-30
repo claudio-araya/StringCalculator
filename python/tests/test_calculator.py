@@ -18,3 +18,12 @@ def test_task1_add_supports_up_to_two_numbers(input_str, expected):
 ])
 def test_task2_add_supports_multiple_numbers(input_str, expected):
     assert Calculator.add(input_str) == expected
+
+
+# Task 3: Breaking Newlines
+@pytest.mark.parametrize("input_str, expected", [
+    ("1\n2,3", 6),  
+    ("2\n3\n5,", 10),
+])
+def test_task3_add_supports_newlines_as_delimiters(input_str, expected):
+    assert Calculator.add(input_str) == expected

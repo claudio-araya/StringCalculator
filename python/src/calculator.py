@@ -4,10 +4,11 @@ class Calculator:
         if not numbers:
             return 0
 
+        numbers = numbers.replace("\n", ",")
         parts = numbers.split(",")
+
         total = 0
-
         for part in parts:
-            total += int(part)
-
+            if part.strip() != "":
+                total += int(part)
         return total
