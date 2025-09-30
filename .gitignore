@@ -6,18 +6,25 @@ obj/
 *.userosscache
 *.sln.docstates
 
-.vscode/
+.paket/
+paket-files/
+tools/
+.fake
 
+.vscode/
 .idea/
+*.log
 
 .DS_Store
 Thumbs.db
 
-.paket/
-paket-files/
-
-tools/
-
-*.log
-
-.fake
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/

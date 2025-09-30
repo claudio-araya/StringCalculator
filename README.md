@@ -2,48 +2,75 @@
     <span style="letter-spacing:0.5px">String Calculator Challenge</span>
 </h1>
 <p align="center" style="margin:0 0 24px; color:#667085;">
-  F# · xUnit · .NET
+  F# · xUnit · .NET · Python · Pytest
 </p>
 
 ## Overview
 
-This repository contains an implementation of a problem called **String Calculator Challenge** in F#.  
-Each task builds incrementally on the previous one, with tests ensuring that no earlier functionality is broken.  
-The project uses **xUnit** as the testing framework.
+This repository contains my implementation of the **String Calculator Challenge** in **two different languages**: **F#** and **Python**.  
 
+Each task builds incrementally on the previous one, with tests ensuring that no earlier functionality is broken. The project uses **xUnit** as the testing framework for F#, and **pytest** for Python.
 
 ## Setup
 
-> [!IMPORTANT]  
-> The .NET SDK must be installed.
-
-1. **Clone the repository:**
+**Clone the repository:**
    ```bash
    git clone https://github.com/claudio-araya/StringCalculator.git
    cd StringCalculator
    ```
 
-2. **Build the project**:
+### F# (.NET)
+
+> [!IMPORTANT]  
+> The .NET SDK must be installed.
+
+1. **Build the project**:
 
     ```bash
+    cd fsharp
     dotnet build
     ```
 
-3. **Run the main app**:
+2. **Run the main app**:
 
     ```bash
     dotnet run --project src
     ```
 
-4. **Run the tests**:
+3. **Run the tests**:
 
     ```bash
     dotnet test
     ```
 
+### Python
+
+> [!IMPORTANT]
+> Python 3.10+ is recommended.
+
+1. **Install dependencies**:
+
+    ```bash
+    cd python
+    pip install -r requirements.txt
+    ```
+
+2. **Run the main app**:
+    ```bash
+    python src/program.py
+    ```
+
+3. **Run the tests:**:
+
+    ```bash
+    pytest -v
+    ```
+
 ## Usage
 
-The calculator logic is implemented in the Calculator class.
+### F#
+
+The calculator logic is implemented in the `Calculator` module, located in `fsharp/src/Calculator.fs`.
 
 ```F#
 open StringCalculator
@@ -52,18 +79,36 @@ let result = Calculator.Add "1,2,3"
 printfn "%d" result
 ```
 
+### Python
+
+The calculator logic is implemented in the `Calculator` class, located in `python/src/calculator.py`.
+
+```python
+from src.calculator import Calculator
+
+result = Calculator.add("1,2,3")
+print(result)
+```
 
 ## Project Structure
 
-- `src/Calculator.fs`: Contains the implementation of the Calculator class and helper methods.
-- `src/Program.fs`: Entry point of the console application.
-- `tests/Tests.fs`: Unit tests written with xUnit.
-- `StringCalculator.sln`: Solution file.
+- F#
+
+    - `fsharp/src/Calculator.fs`: Contains the implementation of the Calculator class.
+    - `fsharp/src/Program.fs`: Entry point of the F# console application.
+    - `fsharp/tests/Tests.fs`: Unit tests written with xUnit.
+    - `fsharp/StringCalculator.sln`: Solution file.
+
+- Python
+
+    - `python/src/calculator.py`: Implementation of the String Calculator.
+    - `python/src/program.py`: Entry point of the Python console application.
+    - `python/tests/test_calculator.py`: Unit tests written with pytest.
 
 
-<br><br>
+<br>
 
-# Tasks Overview
+# Tasks
 
 ## Task 1: Simple Summation
 
