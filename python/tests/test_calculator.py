@@ -76,3 +76,19 @@ def test_task7_add_throws_exception_for_negatives_with_flexible_delimiter():
     with pytest.raises(ValueError) as excinfo:
         Calculator("//[***]\n1***-2***3").add()
     assert str(excinfo.value) == "negatives not allowed: -2"
+
+
+# Task 8: Multiple Delimiters
+@pytest.mark.parametrize("input_str, expected", [
+    ("//[*][%]\n1*2%3", 6),
+    ("//[;][#][!]\n4;5#6!7", 22),
+    ("//[&][?]\n2&1001?3", 5),
+])
+def test_task8_add_supports_multiple_delimiters(input_str, expected):
+    assert Calculator(input_str).add() == expected
+
+
+def test_task8_add_throws_exception_for_negatives_with_multiple_delimiters():
+    with pytest.raises(ValueError) as excinfo:
+        Calculator("//[@][!]\n7@-8!9").add()
+    assert str(excinfo.value) == "negatives not allowed: -8"

@@ -5,30 +5,35 @@ class Calculator:
     def _parse_delimiters_and_numbers(self):
         if self.numbers.startswith("//"):
             parts = self.numbers.split("\n", 1)
-            delimiter = parts[0][2:]
+            delimiter_part = parts[0][2:]
             num_part = parts[1]
 
-            if delimiter.startswith("[") and delimiter.endswith("]"):
-                delimiter = delimiter[1:-1]
+            if "[" in delimiter_part:
+                raw_parts = delimiter_part.replace("]", "[").split("[")
+                delimiters = [p for p in raw_parts if p]
+                
+            else:
+                delimiters = [delimiter_part]
         else:
-            delimiter = ","
-            num_part = self.numbers.replace("\n", ",")
-        return delimiter, num_part
+            delimiters = [",", "\n"]
+            num_part = self.numbers
+        return delimiters, num_part
 
-    def _parse_numbers(self, input_str: str, delimiter: str):
-        number_strings = input_str.split(delimiter)
-        numbers = []
-        for n in number_strings:
-            if n:
-                numbers.append(int(n))
+    def _parse_numbers(self, input_str: str, delimiters: list[str]):
+
+        for d in delimiters:
+            input_str = input_str.replace(d, ",")
+        number_strings = input_str.split(",")
+        numbers = [int(n) for n in number_strings if n]
         return numbers
+
 
     def add(self) -> int:
         if not self.numbers:
             return 0
 
-        delimiter, num_part = self._parse_delimiters_and_numbers()
-        parsed_numbers = self._parse_numbers(num_part, delimiter)
+        delimiters, num_part = self._parse_delimiters_and_numbers()
+        parsed_numbers = self._parse_numbers(num_part, delimiters)
 
         negatives = [n for n in parsed_numbers if n < 0]
         if negatives:
