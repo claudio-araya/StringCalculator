@@ -86,7 +86,8 @@ The calculator logic is implemented in the `Calculator` class, located in `pytho
 ```python
 from src.calculator import Calculator
 
-result = Calculator.add("1,2,3")
+calc = Calculator("1,2,3")
+result = calc.add()
 print(result)
 ```
 

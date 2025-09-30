@@ -2,13 +2,17 @@ from calculator import Calculator
 
 def main():
     print("=== String Calculator ===")
+    delimiter = input("Enter delimiter (without //): ")
+    numbers_line = input("Enter numbers line: ")
 
-    user_input = input("Enter numbers: ")
+    numbers = f"//{delimiter}\n{numbers_line}"
+
     try:
-        result = Calculator.add(user_input)
-        print(f"Result: {result}")
+        calc = Calculator(numbers)
+        result = calc.add()
+        print("Result:", result)
     except Exception as e:
-        print(f"Error: {e}")
+        print("Error:", e)
 
 if __name__ == "__main__":
     main()
