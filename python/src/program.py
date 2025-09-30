@@ -3,7 +3,6 @@ from calculator import Calculator
 def main():
     print("=== String Calculator ===")
 
-    # Format for task 1 is a string of numbers separated by commas
     user_input = input("Enter numbers: ")
     try:
         result = Calculator.add(user_input)
